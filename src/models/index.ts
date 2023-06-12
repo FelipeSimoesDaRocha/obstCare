@@ -1,4 +1,6 @@
-import { ReactNode } from 'react';
+import { StaticImageData } from 'next/image';
+
+import { ChangeEvent, Dispatch, ReactNode, SetStateAction } from 'react';
 
 export type LayoutProps = {
     selectedKey: string;
@@ -64,4 +66,50 @@ export enum ToastTypeEnum {
     ERROR = 'error',
     WARN = 'warn',
     SUCCESS = 'success',
+}
+
+export interface Column {
+    title: string;
+    dataIndex: string;
+    key: string;
+    className?: string;
+}
+
+export interface DataItemGestantes {
+    id: number;
+    user: string;
+    ddp: string;
+    phone: string;
+    obstetra: string;
+    monitoring: number;
+    created_at: string;
+    activity: string;
+    image: StaticImageData;
+}
+
+export interface DataItemObstetras {
+    id: number;
+    user: string;
+    pregnant_women: number;
+    phone: string;
+    state: string;
+    created_at: string;
+    activity: string;
+    image: StaticImageData;
+}
+
+export interface GestantesTableProps {
+    columns: Column[];
+    data: DataItemGestantes[];
+    handleCheckboxChange: (event: ChangeEvent<HTMLInputElement>, index: number) => void;
+    selectedItems: number[];
+    setSelectedItems: Dispatch<SetStateAction<number[]>>;
+}
+
+export interface ObstetrasTableProps {
+    columns: Column[];
+    data: DataItemObstetras[];
+    handleCheckboxChange: (event: ChangeEvent<HTMLInputElement>, index: number) => void;
+    selectedItems: number[];
+    setSelectedItems: Dispatch<SetStateAction<number[]>>;
 }

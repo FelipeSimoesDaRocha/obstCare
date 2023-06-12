@@ -5,10 +5,11 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 // Styles
+import vector from './icons/vector.svg';
+
 import * as S from './Filter.styles';
 
 // Images
-import vector from './icons/vector.svg';
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);

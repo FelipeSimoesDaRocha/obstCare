@@ -42,7 +42,7 @@
           ["/^react/"],
           "/^@tanstack/react-query/",
           "/^public/",
-          ["/images/", "/assets/"],
+          ["/images/", "/icons/", "/assets/"],
           "/styles/",
           "/models/",
           "/context/",
