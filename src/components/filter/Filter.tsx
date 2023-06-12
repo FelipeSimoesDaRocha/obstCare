@@ -8,7 +8,7 @@ import { useState } from 'react';
 import * as S from './Filter.styles';
 
 // Images
-import vector from './icons/Vector.svg';
+import vector from './icons/vector.svg';
 
 const Filter = () => {
   const [isOpen, setIsOpen] = useState(false);
