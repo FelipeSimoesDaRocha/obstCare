@@ -157,7 +157,7 @@ const GestantesTable = () => {
               <td>{item.monitoring}</td>
               <td>{item.activity}</td>
               <td>
-                <button onClick={handleDeleteSelected}>
+                <button>
                   <Image src={frame} alt="image" />
                 </button>
               </td>

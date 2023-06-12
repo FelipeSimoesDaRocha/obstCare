@@ -2,7 +2,7 @@
 import Image from 'next/image';
 
 // React
-import { useState } from 'react';
+import { SetStateAction, useState } from 'react';
 import { Line } from 'react-chartjs-2';
 import 'chart.js';
 
@@ -15,6 +15,9 @@ import * as S from './Charts.styles';
 // Models
 import { LineChartProps } from 'models';
 
+// Moment
+import moment from 'moment';
+
 // Components
 import { Broadcast } from 'components/broadcast';
 
@@ -25,11 +28,21 @@ const RetentionChart = ({ data, labels }: LineChartProps) => {
     const menu = [{ name: 'Gestantes' }, { name: 'Obstetras' }, { name: 'Monitor.' }];
 
     const [selectedItem, setSelectedItem] = useState<number | null>(0);
+    const [selectedDate, setSelectedDate] = useState(moment());
+    const [selectedPeriod, setSelectedPeriod] = useState('daily');
 
     const handleItemClick = (index: number) => {
         setSelectedItem(index);
     };
 
+    const handleDateChange = (e: { target: { value: moment.MomentInput } }) => {
+        const date = moment(e.target.value);
+        setSelectedDate(date);
+    };
+
+    const handlePeriodChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+        setSelectedPeriod(e.target.value);
+    };
 
     const chartData = {
         labels,
@@ -65,6 +78,17 @@ const RetentionChart = ({ data, labels }: LineChartProps) => {
             <div className="header_chart">
                 <Broadcast name={'Retenção'} />
                 <Image src={DotsVertical} alt="icon" />
+            </div>
+
+            <div className="filterDate">
+                <input type="date" value={selectedDate.format('YYYY-MM-DD')} onChange={handleDateChange} />
+                -
+                <input type="date" value={selectedDate.format('YYYY-MM-DD')} onChange={handleDateChange} />
+                <select value={selectedPeriod} onChange={handlePeriodChange}>
+                    <option value="daily">Diário</option>
+                    <option value="monthly">Mensal</option>
+                    <option value="yearly">Anual</option>
+                </select>
             </div>
 
             <S.ChartStyle>

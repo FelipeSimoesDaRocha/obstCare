@@ -16,6 +16,7 @@ export const Component = styled.div<{ isCollapsed: boolean }>`
   .ant-menu {
     background: none !important;
     border-inline-end: none !important;
+    height: 85vh !important;
   }
 
   .ant-menu-item svg {

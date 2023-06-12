@@ -18,7 +18,15 @@ export const Component = styled.div`
     width: 100%;
     display: flex;
     flex-direction: row;
-justify-content: space-between;
+    justify-content: space-between;
+
+    img {
+      cursor: pointer;
+    }
+
+    img:hover {
+      opacity: 0.9;
+    }
   }
 
   ul {
@@ -33,6 +41,28 @@ justify-content: space-between;
 
   p {
     color: #8b909a;
+  }
+
+  .filterDate {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  input[type='date'] {
+    background: #f6f6f6;
+    border-radius: 8px;
+    height: 30px;
+    padding: 10px;
+    width: 130px;
+  }
+
+  select {
+    width: 100px;
+    height: 30px;
+    border-radius: 8px;
+    background: #f6f6f6;
+    padding: 0 10px;
   }
 `;
 
