@@ -7,12 +7,45 @@ export const Component = styled.button`
 
   width: 187px;
   height: 40px;
-  background: #4340da;
   border-radius: 8px;
-  cursor: pointer;
-`;
 
-export const Text = styled.p`
-  font-weight: 700;
-  color: #fff;
+  &.primary {
+    background: #F6F6F6;
+    transition: opacity 500ms;
+
+    p {
+      color: #4340da;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:not(&:disabled) {
+      &:hover {
+        opacity: 85%;
+        transition: opacity 500ms;
+      }
+    }
+  }
+
+  &.secondary {
+    background: #4340da;
+    transition: opacity 500ms;
+
+    p {
+      color: #F6F6F6;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+
+    &:not(&:disabled) {
+      &:hover {
+        opacity: 85%;
+        transition: opacity 500ms;
+      }
+    }
+  }
 `;

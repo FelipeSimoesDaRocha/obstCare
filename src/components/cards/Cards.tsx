@@ -24,7 +24,7 @@ const Cards = ({ name, data, value, income }: cardsProps) => {
         <p>Last {data} days</p>
       </S.Title>
 
-      <S.Content income={incomeValue}>
+      <S.Content contentProps={incomeValue}>
         <h2>{value}</h2>
         <div className="flex">
           <svg viewBox="0 0 10 10" width={14} height={14}>

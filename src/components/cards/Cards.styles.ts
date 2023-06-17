@@ -27,7 +27,7 @@ export const Title = styled.div`
   }
 `;
 
-export const Content = styled.div<{ income: boolean }>`
+export const Content = styled.div<{ contentProps: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -54,8 +54,8 @@ export const Content = styled.div<{ income: boolean }>`
     gap: 6px;
   }
 
-  ${({ income }) =>
-    income &&
+  ${({ contentProps }) =>
+    contentProps &&
     css`
       .flex {
         svg {
