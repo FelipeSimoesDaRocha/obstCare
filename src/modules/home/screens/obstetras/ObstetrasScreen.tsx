@@ -13,11 +13,14 @@ import * as S from './Obstetras.styles';
 // Components
 import { Button } from 'components/button';
 import { Filter } from 'components/filter';
+import { Modal } from 'components/modal';
+import { ObstetrasForm } from 'components/obstetrasForm';
 import { ObstetrasTable } from 'components/obstetrasTable';
 import { Search } from 'components/search';
 
 const ObstetrasScreen = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
@@ -93,6 +96,7 @@ const ObstetrasScreen = () => {
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
+
     if (isChecked) {
       setSelectedItems([...selectedItems, index]);
     } else {
@@ -116,10 +120,13 @@ const ObstetrasScreen = () => {
           <Filter />
         </div>
         <div className="actions">
-          <Button label={'Adicionar'} />
-          <Button label={'Deletar'} onClick={handleDeleteSelected} />
+          <Button label={'Adicionar'} onClick={() => setIsOpen(true)} type="secondary" />
+          <Button label={'Deletar'} onClick={handleDeleteSelected} type="secondary" />
         </div>
       </S.Header>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <ObstetrasForm data={data} setData={setData} onClose={() => setIsOpen(false)} />
+      </Modal>
       <ObstetrasTable
         columns={columns}
         data={data}

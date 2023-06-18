@@ -13,11 +13,14 @@ import * as S from './Gestantes.styles';
 // Components
 import { Button } from 'components/button';
 import { Filter } from 'components/filter';
+import { GestantesForm } from 'components/gestantesForm';
 import { GestantesTable } from 'components/gestantesTable';
+import { Modal } from 'components/modal';
 import { Search } from 'components/search';
 
 const GestantesScreen = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
@@ -123,10 +126,13 @@ const GestantesScreen = () => {
           <Filter />
         </div>
         <div className="actions">
-          <Button label={'Adicionar'} />
-          <Button label={'Deletar'} onClick={handleDeleteSelected} />
+          <Button label={'Adicionar'} onClick={() => setIsOpen(true)} type="secondary" />
+          <Button label={'Deletar'} onClick={handleDeleteSelected} type="secondary" />
         </div>
       </S.Header>
+      <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+        <GestantesForm data={data} setData={setData} onClose={() => setIsOpen(false)} />
+      </Modal>
       <GestantesTable
         columns={columns}
         data={data}
