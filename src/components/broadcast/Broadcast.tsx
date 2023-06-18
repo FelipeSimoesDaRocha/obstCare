@@ -5,9 +5,7 @@ import * as React from 'react';
 import * as S from './Broadcast.styles';
 
 // Models
-type BroadcastProps = {
-  name: string;
-};
+import { BroadcastProps } from './models';
 
 const Broadcast = ({ name }: BroadcastProps) => {
   return (
