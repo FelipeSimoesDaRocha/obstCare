@@ -1,6 +1,11 @@
+// React
+import * as React from 'react';
+
+// Context
 import { selectUser } from 'context/features/user'
 import { useAppSelector } from 'context/hooks'
 
+// Components
 import { CustomAppProps } from 'pages/_app'
 
 const ComponentWrapper = ({ Component, pageProps }: CustomAppProps) => {
