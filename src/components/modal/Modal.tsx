@@ -1,15 +1,11 @@
 // React
-import { ReactNode } from 'react';
+import * as React from 'react';
 
 // Styles
 import * as S from './Modal.styles';
 
 // Models
-type ModalProps = {
-  open: boolean;
-  onClose: () => void;
-  children: ReactNode
-};
+import { ModalProps } from './models';
 
 const Modal = ({ open, onClose, children }: ModalProps) => {
   return (
