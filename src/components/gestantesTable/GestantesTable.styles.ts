@@ -6,6 +6,10 @@ export const Component = styled.div`
   width: 100%;
   color: #7d7d7d;
 
+  table {
+    border-collapse: collapse;
+  }
+
   thead tr {
     height: 75px;
     text-align: justify;
