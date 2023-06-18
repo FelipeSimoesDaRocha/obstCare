@@ -30,6 +30,11 @@ export const Component = styled.div`
     }
   }
 
+  tbody tr td img {
+    width: 43px;
+    height: auto;
+  }
+
   tbody tr td:nth-child(2) {
     div {
       display: flex;

@@ -2,13 +2,14 @@
 import Image from 'next/image';
 
 // Icons
+import avatar from './icons/avatar.svg';
 import frame from './icons/Frame.svg';
 
 // Styles
 import * as S from './GestantesTable.styles';
 
 // Models
-import { GestantesTableProps } from 'models';
+import { GestantesTableProps } from './models';
 
 const GestantesTable = ({ columns, data, handleCheckboxChange, selectedItems, setSelectedItems }: GestantesTableProps) => {
   return (
@@ -46,7 +47,7 @@ const GestantesTable = ({ columns, data, handleCheckboxChange, selectedItems, se
               </td>
               <td>
                 <div>
-                  <Image src={item.image} alt="image" />
+                  <Image src={item.image ? item.image : avatar} alt="image" />
                   {item.user}
                 </div>
               </td>

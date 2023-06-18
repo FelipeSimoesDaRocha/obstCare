@@ -2,15 +2,22 @@
 import Image from 'next/image';
 
 // Icons
+import avatar from './icons/avatar.svg';
 import frame from './icons/Frame.svg';
 
 // Styles
 import * as S from './ObstetrasTable.styles';
 
 // Models
-import { ObstetrasTableProps } from 'models';
+import { ObstetrasTableProps } from './models';
 
-const ObstetrasTable = ({ columns, data, handleCheckboxChange, selectedItems, setSelectedItems }: ObstetrasTableProps) => {
+const ObstetrasTable = ({
+  columns,
+  data,
+  handleCheckboxChange,
+  selectedItems,
+  setSelectedItems,
+}: ObstetrasTableProps) => {
   return (
     <S.Component>
       <table>
@@ -46,7 +53,7 @@ const ObstetrasTable = ({ columns, data, handleCheckboxChange, selectedItems, se
               </td>
               <td>
                 <div>
-                  <Image src={item.image} alt="image" />
+                  <Image src={item.image ? item.image : avatar} alt="image" />
                   {item.user}
                 </div>
               </td>
