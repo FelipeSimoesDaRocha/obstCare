@@ -16,7 +16,7 @@ import avatar from 'assets/images/avatar.png';
 import * as S from './Layout.styles';
 
 // Models
-import { LayoutProps } from 'models';
+import { LayoutProps } from './models';
 
 // Context
 import { logout } from 'context/features/user';
