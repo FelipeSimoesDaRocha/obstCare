@@ -1,13 +1,11 @@
 // React
-import React from 'react';
+import * as React from 'react';
 
 // Styles
 import * as S from './Button.styles';
 
 // Models
 import { IButtonProps } from './models';
-
-// Lottie
 
 const Button = ({
   label,
