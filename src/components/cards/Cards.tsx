@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import * as S from './Cards.styles';
 
 // Models
-import { cardsProps } from 'models';
+import { cardsProps } from './models';
 
 // Components
 import { Broadcast } from 'components/broadcast';
