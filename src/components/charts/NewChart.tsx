@@ -13,7 +13,7 @@ import DotsVertical from '../../assets/icons/dots-vertical.svg';
 import * as S from './Charts.styles';
 
 // Models
-import { LineChartProps } from 'models';
+import { LineChartProps } from './models';
 
 // Moment
 import moment from 'moment';
