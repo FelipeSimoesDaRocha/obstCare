@@ -1,5 +1,8 @@
 // Next
-import { StaticImageData } from "next/image";
+import { StaticImageData } from 'next/image';
+
+// React
+import { Dispatch, SetStateAction } from 'react';
 
 export interface DataItemObstetras {
     id: number;
@@ -9,11 +12,11 @@ export interface DataItemObstetras {
     state: string;
     created_at: string;
     activity: string;
-    image?: StaticImageData | undefined;
+    image: StaticImageData | null;
 }
 
 export interface ObstetrasFormProps {
     onClose: () => void;
     data: DataItemObstetras[];
-    setData: React.Dispatch<React.SetStateAction<DataItemObstetras[]>>;
+    setData: Dispatch<SetStateAction<DataItemObstetras[]>>;
 }

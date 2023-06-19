@@ -22,7 +22,7 @@ export interface DataItemGestantes {
     monitoring: number;
     created_at: string;
     activity: string;
-    image?: StaticImageData;
+    image: StaticImageData | null;
 }
 
 // Table

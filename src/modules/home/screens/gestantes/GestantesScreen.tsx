@@ -10,6 +10,9 @@ import icon4 from '../../../../assets/images/image4.png';
 // Styles
 import * as S from './Gestantes.styles';
 
+// Models
+import { DataItemGestantes } from 'components/gestantesForm/models';
+
 // Components
 import { Button } from 'components/button';
 import { Filter } from 'components/filter';
@@ -31,7 +34,7 @@ const GestantesScreen = () => {
     { title: 'Atividade', dataIndex: 'activity', key: 'activity' },
   ];
 
-  const [data, setData] = useState([
+  const [data, setData] = useState<DataItemGestantes[]>([
     {
       id: 1,
       user: 'Andrew Bojangles',

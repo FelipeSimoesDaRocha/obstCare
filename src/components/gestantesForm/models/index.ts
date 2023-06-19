@@ -1,6 +1,9 @@
 // Next
 import { StaticImageData } from 'next/image';
 
+// React
+import { Dispatch, SetStateAction } from 'react';
+
 export interface DataItemGestantes {
     id: number;
     user: string;
@@ -10,11 +13,11 @@ export interface DataItemGestantes {
     monitoring: number;
     created_at: string;
     activity: string;
-    image?: StaticImageData | undefined;
+    image: StaticImageData | null;
 }
 
 export interface GestantesFormProps {
     onClose: () => void;
     data: DataItemGestantes[];
-    setData: React.Dispatch<React.SetStateAction<DataItemGestantes[]>>;
+    setData: Dispatch<SetStateAction<DataItemGestantes[]>>;
 }

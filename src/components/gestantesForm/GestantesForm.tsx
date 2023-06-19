@@ -60,6 +60,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
         monitoring: 0,
         created_at: '',
         activity: '',
+        image: null
       };
 
       setData([...data, newItem]);

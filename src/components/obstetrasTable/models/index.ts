@@ -19,7 +19,7 @@ export interface DataItemObstetras {
     state: string;
     created_at: string;
     activity: string;
-    image?: StaticImageData;
+    image: StaticImageData | null;
 }
 
 export interface ObstetrasTableProps {

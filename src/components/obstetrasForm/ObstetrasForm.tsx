@@ -60,6 +60,7 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
         state: 'XX',
         created_at: '15/06/2023',
         activity: 'Just now',
+        image: null
       };
 
       setData([...data, newItem]);
