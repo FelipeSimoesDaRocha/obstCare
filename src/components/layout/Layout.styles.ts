@@ -1,16 +1,16 @@
 import styled, { css } from 'styled-components';
 
 export const Component = styled.div<{ isCollapsed: boolean }>`
-  .ant-layout-sider-children {
-    margin: 1rem;
-  }
-
-  .site-layout {
+  .ant-layout {
     background: var(--fff);
   }
 
-  .ant-menu-submenu svg {
-    font-size: 22px !important;
+  .ant-layout-content {
+    margin: 3rem 1rem;
+  }
+
+  .ant-layout-sider-children {
+    margin: 1rem;
   }
 
   .ant-menu {
@@ -19,7 +19,8 @@ export const Component = styled.div<{ isCollapsed: boolean }>`
     height: 85vh !important;
   }
 
-  .ant-menu-item svg {
+  .ant-menu-item svg ,
+  .ant-menu-submenu svg{
     font-size: 22px !important;
   }
 
@@ -37,10 +38,6 @@ export const Component = styled.div<{ isCollapsed: boolean }>`
     svg {
       fill: #000;
     }
-  }
-
-  span.ant-layout-sider-zero-width-trigger.ant-layout-sider-zero-width-trigger-left {
-    top: 90px !important;
   }
 
   .signOut {

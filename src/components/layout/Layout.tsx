@@ -69,7 +69,7 @@ const Layout = ({ selectedKey, children }: LayoutProps) => {
             >
               Home
             </Menu.Item>
-            <Menu.SubMenu title="Users" icon={<FiUsers />}>
+            <Menu.SubMenu key="sub1" title="Users" icon={<FiUsers />}>
               <Menu.Item
                 key="2"
                 onClick={() => {
@@ -93,8 +93,8 @@ const Layout = ({ selectedKey, children }: LayoutProps) => {
             <span>Sign out</span>
           </Link>
         </Sider>
-        <LayoutContainer className="site-layout">
-          <Content style={{ margin: '3rem 1rem' }}>{children}</Content>
+        <LayoutContainer>
+          <Content>{children}</Content>
         </LayoutContainer>
       </LayoutContainer>
     </S.Component>
