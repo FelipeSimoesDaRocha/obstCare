@@ -24,6 +24,8 @@ import { Search } from 'components/search';
 const ObstetrasScreen = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
@@ -37,7 +39,7 @@ const ObstetrasScreen = () => {
   const [data, setData] = useState<DataItemObstetras[]>([
     {
       id: 1,
-      user: 'Andrew Bojangles',
+      user: 'Felipe Bojangles',
       pregnant_women: 3,
       phone: '+79000010101',
       state: 'RS',
@@ -47,7 +49,7 @@ const ObstetrasScreen = () => {
     },
     {
       id: 2,
-      user: 'Andrew Bojangles',
+      user: 'George Bojangles',
       pregnant_women: 2,
       phone: '+79000010101',
       state: 'SP',
@@ -57,7 +59,7 @@ const ObstetrasScreen = () => {
     },
     {
       id: 3,
-      user: 'Andrew Bojangles',
+      user: 'Maria Bojangles',
       pregnant_women: 5,
       phone: '+79000010101',
       state: 'SP',
@@ -97,42 +99,73 @@ const ObstetrasScreen = () => {
     },
   ]);
 
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+  };
+
+  const filteredData = data.filter(item =>
+    item.user.toLowerCase().includes(searchValue.toLowerCase())
+  );
+
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
 
     if (isChecked) {
       setSelectedItems([...selectedItems, index]);
     } else {
-      setSelectedItems(selectedItems.filter(item => item !== index));
+      setSelectedItems(selectedItems.filter((item) => item !== index));
     }
   };
 
   const handleDeleteSelected = () => {
-    setData(prevData => {
+    setData((prevData) => {
       const newData = prevData.filter((_, index) => !selectedItems.includes(index));
       return newData;
     });
     setSelectedItems([]);
+    setIsOpenDelete(false);
   };
 
   return (
     <S.Container>
       <S.Header>
         <div className="filters">
-          <Search title="Search" />
+          <Search
+            title="Search"
+            key="input-name"
+            id="name"
+            type="text"
+            data-testid="name"
+            value={searchValue}
+            onChange={handleSearchChange}
+            autocomplete="current-name"
+          />
           <Filter />
         </div>
         <div className="actions">
           <Button label={'Adicionar'} onClick={() => setIsOpen(true)} type="secondary" />
-          <Button label={'Deletar'} onClick={handleDeleteSelected} type="secondary" />
+          <Button
+            label={'Deletar'}
+            onClick={() => setIsOpenDelete(true)}
+            type="secondary"
+            disabled={selectedItems.length === 0}
+          />
         </div>
       </S.Header>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <ObstetrasForm data={data} setData={setData} onClose={() => setIsOpen(false)} />
       </Modal>
+      <Modal open={isOpenDelete} onClose={() => setIsOpenDelete(false)}>
+        <h2>Tem certeza que quer deletar?</h2>
+        <p>Deletar pode ser perigoso!</p>
+        <div className="actions_modal">
+          <Button label={'Cancelar'} type="primary" onClick={() => setIsOpenDelete(false)} />
+          <Button label={'Deletar'} type="secondary" onClick={handleDeleteSelected} />
+        </div>
+      </Modal>
       <ObstetrasTable
         columns={columns}
-        data={data}
+        data={filteredData}
         handleCheckboxChange={handleCheckboxChange}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}

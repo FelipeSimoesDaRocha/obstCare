@@ -11,7 +11,13 @@ import * as S from './GestantesTable.styles';
 // Models
 import { GestantesTableProps } from './models';
 
-const GestantesTable = ({ columns, data, handleCheckboxChange, selectedItems, setSelectedItems }: GestantesTableProps) => {
+const GestantesTable = ({
+  columns,
+  data,
+  handleCheckboxChange,
+  selectedItems,
+  setSelectedItems,
+}: GestantesTableProps) => {
   return (
     <S.Component>
       <table>
@@ -30,14 +36,14 @@ const GestantesTable = ({ columns, data, handleCheckboxChange, selectedItems, se
                 }}
               />
             </th>
-            {columns.map((item, index) => (
-              <th key={index}>{item.title}</th>
+            {columns.map((item) => (
+              <th key={item.title}>{item.title}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {data.map((item, index) => (
-            <tr key={index}>
+            <tr key={item.id}>
               <td>
                 <input
                   type="checkbox"
@@ -47,7 +53,7 @@ const GestantesTable = ({ columns, data, handleCheckboxChange, selectedItems, se
               </td>
               <td>
                 <div>
-                  <Image src={item.image ? item.image : avatar} alt="image" />
+                  <Image src={item.image ? item.image : avatar} alt={`User ${item.user}`} />
                   {item.user}
                 </div>
               </td>

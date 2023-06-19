@@ -4,15 +4,14 @@ import Image from 'next/image';
 // React
 import { useState } from 'react';
 
-// Styles
-import icon from './images/icon.svg';
+// Icons
+import icon from './icons/icon.svg';
 
+// Styles
 import * as S from './Search.styles';
 
 // Models
 import { inputProps, inputValueProps } from './models';
-
-// Images
 
 const InputValue = (props: inputValueProps) => {
   const {
@@ -92,7 +91,6 @@ const Search = (props: inputProps) => {
   const {
     id,
     type,
-    mask,
     title,
     value,
     checked,
@@ -103,19 +101,17 @@ const Search = (props: inputProps) => {
     onBlur,
     onChange,
     onEnterPress,
-    width,
     values,
     autocomplete,
   } = props;
 
   return (
-    <S.Component style={{ width }}>
+    <S.Component>
       {values?.length ? (
         values.map(input => (
           <InputValue
             id={input.id}
             type={input.type}
-            mask={input.mask}
             title={input.title}
             value={input.value}
             className={input.className}
@@ -135,7 +131,6 @@ const Search = (props: inputProps) => {
           id={id}
           title={title}
           type={type}
-          mask={mask}
           value={value}
           className={className}
           placeholder={placeholder}

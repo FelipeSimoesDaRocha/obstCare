@@ -10,7 +10,11 @@ import { ModalProps } from './models';
 const Modal = ({ open, onClose, children }: ModalProps) => {
   return (
     <S.Component open={open} onClose={onClose}>
-      {children}
+      <S.Content>
+        <S.Container>
+          {children}
+        </S.Container>
+      </S.Content>
     </S.Component>
   );
 };

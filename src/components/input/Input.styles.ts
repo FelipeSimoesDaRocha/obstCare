@@ -15,7 +15,7 @@ export const Component = styled.div`
   }
 
   input {
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid #f1f1f1;
     display: inline-flex;
     overflow: hidden;
     padding-left: 20px;
@@ -28,6 +28,10 @@ export const Component = styled.div`
       outline: none;
       border: 1px solid rgba(0, 0, 0, 0.4);
       transition: all 250ms;
+    }
+
+    &::placeholder {
+      color: #343434;
     }
   }
 

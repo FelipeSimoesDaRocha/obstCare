@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Component = styled.div`
+  position: relative;
   width: 100%;
   height: 40px;
-  position: relative;
   display: flex;
   flex-direction: column;
   transition: all 600ms;
@@ -42,7 +42,6 @@ export const Component = styled.div`
     }
 
     input[type='text'] {
-      display: none;
     }
   }
 `;

@@ -4,7 +4,7 @@ type ModalProps = {
   onClose: () => void;
 };
 
-export const Component = styled.div<{ open: boolean, onClose: ModalProps["onClose"] }>`
+export const Component = styled.div<{ open: boolean; onClose: ModalProps['onClose'] }>`
   position: fixed;
   top: 0;
   left: 0;
@@ -21,4 +21,34 @@ export const Component = styled.div<{ open: boolean, onClose: ModalProps["onClos
     css`
       display: flex;
     `}
+`;
+
+export const Content = styled.div`
+  width: 495px;
+  height: auto;
+
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.12);
+`;
+
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 44px;
+
+  h2 {
+    font-weight: 400;
+    font-size: 28px;
+    color: #000000;
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 16px;
+    color: #000000;
+  }
 `;

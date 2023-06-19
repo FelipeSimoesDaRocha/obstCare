@@ -24,6 +24,8 @@ import { Search } from 'components/search';
 const GestantesScreen = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [searchValue, setSearchValue] = useState('');
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
@@ -37,7 +39,7 @@ const GestantesScreen = () => {
   const [data, setData] = useState<DataItemGestantes[]>([
     {
       id: 1,
-      user: 'Andrew Bojangles',
+      user: 'Marcos Bojangles',
       ddp: '14/05/2023',
       phone: '+79000010101',
       obstetra: 'Caroline Paim',
@@ -103,6 +105,12 @@ const GestantesScreen = () => {
     },
   ]);
 
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+  };
+
+  const filteredData = data.filter(item => item.user.toLowerCase().includes(searchValue.toLowerCase()));
+
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
 
@@ -119,26 +127,49 @@ const GestantesScreen = () => {
       return newData;
     });
     setSelectedItems([]);
+    setIsOpenDelete(false);
   };
 
   return (
     <S.Container>
       <S.Header>
         <div className="filters">
-          <Search title="Search" />
+          <Search
+            title="Search"
+            key="input-name"
+            id="name"
+            type="text"
+            data-testid="name"
+            value={searchValue}
+            onChange={handleSearchChange}
+            autocomplete="current-name"
+          />
           <Filter />
         </div>
         <div className="actions">
           <Button label={'Adicionar'} onClick={() => setIsOpen(true)} type="secondary" />
-          <Button label={'Deletar'} onClick={handleDeleteSelected} type="secondary" />
+          <Button
+            label={'Deletar'}
+            onClick={() => setIsOpenDelete(true)}
+            type="secondary"
+            disabled={selectedItems.length === 0}
+          />
         </div>
       </S.Header>
       <Modal open={isOpen} onClose={() => setIsOpen(false)}>
         <GestantesForm data={data} setData={setData} onClose={() => setIsOpen(false)} />
       </Modal>
+      <Modal open={isOpenDelete} onClose={() => setIsOpenDelete(false)}>
+        <h2>Tem certeza que quer deletar?</h2>
+        <p>Deletar pode ser perigoso!</p>
+        <div className="actions_modal">
+          <Button label={'Cancelar'} type="primary" onClick={() => setIsOpenDelete(false)} />
+          <Button label={'Deletar'} type="secondary" onClick={handleDeleteSelected} />
+        </div>
+      </Modal>
       <GestantesTable
         columns={columns}
-        data={data}
+        data={filteredData}
         handleCheckboxChange={handleCheckboxChange}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}

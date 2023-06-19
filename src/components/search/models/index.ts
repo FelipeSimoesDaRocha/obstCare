@@ -31,7 +31,6 @@ export interface inputProps {
   placeholder?: string;
   autocomplete?: string;
   values?: inputValueProps[];
-  width?: string;
   onBlur?: (event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   onChange?: (value: string) => void;
   onEnterPress?: (value: string) => void;
