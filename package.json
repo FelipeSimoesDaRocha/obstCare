@@ -29,6 +29,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.9.0",
+    "react-input-mask": "^2.0.4",
     "react-redux": "^8.0.7",
     "redux-persist": "^6.0.0",
     "styled-components": "^5.3.11",
@@ -38,6 +39,7 @@
   },
   "devDependencies": {
     "@next/eslint-plugin-next": "^13.4.4",
+    "@types/react-input-mask": "^3.0.2",
     "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.59.7",
     "@typescript-eslint/parser": "^5.59.7",

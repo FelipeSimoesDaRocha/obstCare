@@ -22,4 +22,24 @@ export const Container = styled.div`
     justify-content: center;
     gap: 17px;
   }
+
+  .form-input {
+    position: relative;
+    display: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .err {
+      font-size: 14px;
+      color: #ff9c03;
+    }
+
+    .err::before {
+      content: '*';
+      margin-right: 4px;
+      color: red;
+    }
+  }
 `;

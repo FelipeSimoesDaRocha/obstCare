@@ -9,7 +9,7 @@ import { GestantesFormProps } from './models';
 import { IGestantes } from 'models';
 
 // Formik
-import { FormikProvider, useFormik } from 'formik';
+import { ErrorMessage, FormikProvider, useFormik } from 'formik';
 
 // Components
 import { Button } from 'components/button';
@@ -77,43 +77,142 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
       <h2>Adicionar</h2>
       <FormikProvider value={formik}>
         <div className='form_itens'>
-          <Input
-            key="input-name"
-            id="name"
-            title="Nome"
-            type="text"
-            placeholder="Escreva aqui..."
-            data-testid="name"
-            onChange={formik.handleChange('name')}
-            onBlur={formik.handleBlur('name')}
-            value={formik.values.name}
-            autocomplete="current-name"
-          />
-          <Input
-            key="input-email"
-            id="email"
-            title="Email"
-            type="text"
-            placeholder="Escreva aqui..."
-            data-testid="email"
-            onChange={formik.handleChange('email')}
-            onBlur={formik.handleBlur('email')}
-            value={formik.values.email}
-            autocomplete="current-email"
-          />
-          <Input
-            key="input-phone"
-            id="phone"
-            title="Telefone"
-            type="text"
-            placeholder="Escreva aqui..."
-            data-testid="phone"
-            onChange={formik.handleChange('phone')}
-            onBlur={formik.handleBlur('phone')}
-            value={formik.values.phone}
-            autocomplete="current-phone"
-          />
-
+          <div className="form-input">
+            <ErrorMessage className="err" name="name" component="div" />
+            <Input
+              key="input-name"
+              id="name"
+              title="Nome"
+              type="text"
+              placeholder="Escreva aqui..."
+              data-testid="name"
+              onChange={formik.handleChange('name')}
+              onBlur={formik.handleBlur('name')}
+              value={formik.values.name}
+              autocomplete="current-name"
+            />
+          </div>
+          <div className="form-input">
+            <ErrorMessage className="err" name="email" component="div" />
+            <Input
+              key="input-email"
+              id="email"
+              title="Email"
+              type="text"
+              placeholder="Escreva aqui..."
+              data-testid="email"
+              onChange={formik.handleChange('email')}
+              onBlur={formik.handleBlur('email')}
+              value={formik.values.email}
+              autocomplete="current-email"
+            />
+          </div>
+          <div className="form-input">
+            <ErrorMessage className="err" name="phone" component="div" />
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Telefone"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Data de nascimento"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Dum"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Gestações prévias"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Partos prévios"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Risco"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
+          <div className="form-input">
+            <Input
+              key="input-phone"
+              id="phone"
+              title="Risco"
+              type="text"
+              mask="(99) 9999-9999"
+              placeholder="Escreva aqui..."
+              data-testid="phone"
+              onChange={formik.handleChange('phone')}
+              onBlur={formik.handleBlur('phone')}
+              value={formik.values.phone}
+              autocomplete="current-phone"
+            />
+          </div>
         </div>
 
         <div className="actions">

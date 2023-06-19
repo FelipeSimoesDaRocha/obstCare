@@ -2,6 +2,7 @@ export interface inputValueProps {
   id?: string;
   info?: string;
   type?: string;
+  mask?: string | (string | RegExp)[];
   title?: string;
   value?: string | number;
   checked?: boolean;
@@ -20,6 +21,7 @@ export interface inputProps {
   id?: string;
   info?: string;
   type?: string;
+  mask?: string | (string | RegExp)[];
   title: string;
   value?: string | number;
   checked?: boolean;

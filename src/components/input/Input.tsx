@@ -1,5 +1,6 @@
 // React
 import { useState } from 'react';
+import InputMask from 'react-input-mask';
 
 // Styles
 import * as S from './Input.styles';
@@ -7,10 +8,13 @@ import * as S from './Input.styles';
 // Models
 import { inputProps, inputValueProps } from './models';
 
+import { Field } from 'formik';
+
 const InputValue = (props: inputValueProps) => {
   const {
     id,
     type,
+    mask,
     title,
     value,
     checked,
@@ -51,33 +55,64 @@ const InputValue = (props: inputValueProps) => {
       className={`${'input'} ${classContainer} ${invalidRequired ? 'required' : ''} ${isFocused ? 'focused' : ''} ${type === 'password' ? 'password' : ''
         }`}
     >
-      <>
-        <label
-          className={'label'}
-          htmlFor={id}
-          data-testid={`${id}-label`}
-          dangerouslySetInnerHTML={{ __html: title as string }}
-        />
-        <input
-          id={id}
-          key={id}
-          type={type}
-          title={title}
-          value={value}
-          data-testid={id}
-          checked={checked}
-          required={required}
-          className={className}
-          onChange={onChangeValue}
-          placeholder={placeholder}
-          onKeyUp={event => onKeyUp(event)}
-          onFocus={() => setIsFocused(true)}
-          onBlur={event => {
-            onBlur && onBlur(event);
-            setIsFocused(false);
-          }}
-        />
-      </>
+      {mask ? (
+        <>
+          <label
+            className={'label'}
+            htmlFor={id}
+            data-testid={`${id}-label`}
+            dangerouslySetInnerHTML={{ __html: title as string }}
+          />
+          <InputMask
+            id={id}
+            key={id}
+            type={type}
+            mask={mask}
+            title={title}
+            value={value}
+            data-testid={id}
+            checked={checked}
+            required={required}
+            className={className}
+            onChange={onChangeValue}
+            placeholder={placeholder}
+            onKeyUp={event => onKeyUp(event)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={event => {
+              onBlur && onBlur(event);
+              setIsFocused(false);
+            }}
+          />
+        </>
+      ) : (
+        <>
+          <label
+            className={'label'}
+            htmlFor={id}
+            data-testid={`${id}-label`}
+            dangerouslySetInnerHTML={{ __html: title as string }}
+          />
+          <input
+            id={id}
+            key={id}
+            type={type}
+            title={title}
+            value={value}
+            data-testid={id}
+            checked={checked}
+            required={required}
+            className={className}
+            onChange={onChangeValue}
+            placeholder={placeholder}
+            onKeyUp={event => onKeyUp(event)}
+            onFocus={() => setIsFocused(true)}
+            onBlur={event => {
+              onBlur && onBlur(event);
+              setIsFocused(false);
+            }}
+          />
+        </>
+      )}
     </div>
   );
 };
@@ -86,6 +121,7 @@ const Input = (props: inputProps) => {
   const {
     id,
     type,
+    mask,
     title,
     value,
     checked,
@@ -110,6 +146,7 @@ const Input = (props: inputProps) => {
             type={input.type}
             title={input.title}
             value={input.value}
+            mask={input.mask}
             className={input.className}
             placeholder={input.placeholder}
             key={input.id}
@@ -127,6 +164,7 @@ const Input = (props: inputProps) => {
           id={id}
           title={title}
           type={type}
+          mask={mask}
           value={value}
           className={className}
           placeholder={placeholder}
