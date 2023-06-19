@@ -55,8 +55,13 @@ export interface IObstcares {
 }
 
 export interface IGestantes {
+    obstetra: string,
     name: string,
     email: string,
     phone: string,
-    crm?: string;
+    date_of_birth: string;
+    dum: string
+    previous_pregnancies: number
+    previous_births: number
+    risk: string
 }
