@@ -103,9 +103,7 @@ const ObstetrasScreen = () => {
     setSearchValue(value);
   };
 
-  const filteredData = data.filter(item =>
-    item.user.toLowerCase().includes(searchValue.toLowerCase())
-  );
+  const filteredData = data.filter(item => item.user.toLowerCase().includes(searchValue.toLowerCase()));
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
@@ -113,12 +111,12 @@ const ObstetrasScreen = () => {
     if (isChecked) {
       setSelectedItems([...selectedItems, index]);
     } else {
-      setSelectedItems(selectedItems.filter((item) => item !== index));
+      setSelectedItems(selectedItems.filter(item => item !== index));
     }
   };
 
   const handleDeleteSelected = () => {
-    setData((prevData) => {
+    setData(prevData => {
       const newData = prevData.filter((_, index) => !selectedItems.includes(index));
       return newData;
     });

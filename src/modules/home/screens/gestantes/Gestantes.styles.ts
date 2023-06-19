@@ -17,6 +17,67 @@ export const Container = styled.div`
     justify-content: center;
     gap: 17px;
   }
+
+  .contentReminder {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .itenCheck {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 22px;
+
+    label {
+      font-size: 16px;
+      line-height: 26px;
+      color: #000000;
+    }
+
+    input[type='time'] {
+      appearance: none;
+    }
+
+    input[type='checkbox'] {
+      appearance: none;
+
+      cursor: pointer;
+      width: 24px;
+      height: 24px;
+      border: 1px solid #0832de;
+      border-radius: 4px;
+      padding: 0px;
+
+      &:checked {
+        background: #0832de;
+      }
+    }
+
+    input[type='checkbox']::before {
+      content: '';
+      display: flex;
+      align-items: center;
+      width: 12px;
+      height: 12px;
+      margin: 5px;
+    }
+
+    input[type='checkbox']:checked::before {
+      content: '✓';
+      color: #fff;
+    }
+  }
 `;
 
 export const Header = styled.div`

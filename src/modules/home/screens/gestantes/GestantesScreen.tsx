@@ -18,6 +18,7 @@ import { Button } from 'components/button';
 import { Filter } from 'components/filter';
 import { GestantesForm } from 'components/gestantesForm';
 import { GestantesTable } from 'components/gestantesTable';
+import { Input } from 'components/input';
 import { Modal } from 'components/modal';
 import { Search } from 'components/search';
 
@@ -25,7 +26,18 @@ const GestantesScreen = () => {
   const [selectedItems, setSelectedItems] = useState<number[]>([]);
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
+  const [isOpenReminder, setIsOpenReminder] = useState(false);
   const [searchValue, setSearchValue] = useState('');
+  const [timeValue, setTimeValue] = useState('');
+
+  const [items, setItems] = useState([
+    { id: 1, label: 'Pressão', checked: false },
+    { id: 2, label: 'Glicemia', checked: false },
+    { id: 3, label: 'Humor', checked: false },
+    { id: 4, label: 'Sintomas', checked: false },
+    { id: 5, label: 'Mov. Fetais', checked: false },
+    { id: 6, label: 'Peso', checked: false },
+  ]);
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
@@ -105,8 +117,23 @@ const GestantesScreen = () => {
     },
   ]);
 
+  const handleReminderItens = (itemId: number) => {
+    setItems(prevItems => {
+      return prevItems.map(item => {
+        if (item.id === itemId) {
+          return { ...item, checked: !item.checked };
+        }
+        return item;
+      });
+    });
+  };
+
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
+  };
+
+  const handleTimeChange = (value: string) => {
+    setTimeValue(value);
   };
 
   const filteredData = data.filter(item => item.user.toLowerCase().includes(searchValue.toLowerCase()));
@@ -167,12 +194,31 @@ const GestantesScreen = () => {
           <Button label={'Deletar'} type="secondary" onClick={handleDeleteSelected} />
         </div>
       </Modal>
+      <Modal open={isOpenReminder} onClose={() => setIsOpenReminder(false)}>
+        <h2>Adicionar lembrete</h2>
+        <div className="contentReminder">
+          <Input title={'Horário'} type="time" value={timeValue} onChange={handleTimeChange} />
+          {items.map(item => (
+            <div key={item.id} className="itenCheck">
+              <div className="item">
+                <input type="checkbox" checked={item.checked} onChange={() => handleReminderItens(item.id)} />
+                <label>{item.label}</label>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="actions_modal">
+          <Button label={'Cancelar'} type="primary" onClick={() => setIsOpenReminder(false)} />
+          <Button label={'Salvar'} type="secondary" onClick={handleDeleteSelected} />
+        </div>
+      </Modal>
       <GestantesTable
         columns={columns}
         data={filteredData}
         handleCheckboxChange={handleCheckboxChange}
         selectedItems={selectedItems}
         setSelectedItems={setSelectedItems}
+        OpenModal={() => setIsOpenReminder(true)}
       />
     </S.Container>
   );

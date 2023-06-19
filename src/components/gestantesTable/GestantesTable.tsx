@@ -17,7 +17,12 @@ const GestantesTable = ({
   handleCheckboxChange,
   selectedItems,
   setSelectedItems,
+  OpenModal,
 }: GestantesTableProps) => {
+  const handleOpenModal = () => {
+    OpenModal();
+  };
+
   return (
     <S.Component>
       <table>
@@ -36,7 +41,7 @@ const GestantesTable = ({
                 }}
               />
             </th>
-            {columns.map((item) => (
+            {columns.map(item => (
               <th key={item.title}>{item.title}</th>
             ))}
           </tr>
@@ -63,7 +68,7 @@ const GestantesTable = ({
               <td>{item.monitoring}</td>
               <td>{item.activity}</td>
               <td>
-                <button>
+                <button onClick={handleOpenModal}>
                   <Image src={frame} alt="image" />
                 </button>
               </td>

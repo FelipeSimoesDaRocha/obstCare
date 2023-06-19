@@ -32,4 +32,5 @@ export interface GestantesTableProps {
     handleCheckboxChange: (event: ChangeEvent<HTMLInputElement>, index: number) => void;
     selectedItems: number[];
     setSelectedItems: Dispatch<SetStateAction<number[]>>;
+    OpenModal: () => void;
 }

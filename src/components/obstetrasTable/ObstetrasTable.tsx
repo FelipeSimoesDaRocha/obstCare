@@ -36,7 +36,7 @@ const ObstetrasTable = ({
                 }}
               />
             </th>
-            {columns.map((item) => (
+            {columns.map(item => (
               <th key={item.title}>{item.title}</th>
             ))}
           </tr>

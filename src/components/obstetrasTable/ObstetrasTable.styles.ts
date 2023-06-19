@@ -46,4 +46,8 @@ export const Component = styled.div`
       font-size: 15px;
     }
   }
+
+  input[type='checkbox'] {
+    width: auto;
+  }
 `;
