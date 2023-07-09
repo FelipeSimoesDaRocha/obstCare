@@ -41,13 +41,6 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
     risk: '',
   };
 
-  const formik = useFormik({
-    validationSchema: useValidationSchema(),
-    initialValues,
-    validateOnBlur: true,
-    enableReinitialize: true,
-    onSubmit: () => { },
-  });
 
   useEffect(() => {
     if (!formik.values) {
@@ -57,15 +50,15 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
     }
   }, []);
 
-  const onFinish = async () => {
+  const onSubmit = async (values) => {
     try {
       setIsLoading(true);
       const newItem = {
         id: data.length + 1,
-        name: formik.values.name,
+        name: values.name,
         perfilImage: null,
         ddp: '',
-        telefone: formik.values.telefone,
+        telefone: values.telefone,
         obstetraResponsavel: '',
         monitoramentos: 0,
         ultimaAtividade: '',
@@ -79,6 +72,14 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
       handleCloseModal();
     }
   };
+
+  const formik = useFormik({
+    validationSchema: useValidationSchema(),
+    initialValues,
+    validateOnBlur: true,
+    enableReinitialize: true,
+    onSubmit
+  });
 
   return (
     <S.Container>
@@ -219,7 +220,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
             disabled={isDisabled}
             loading={isLoading}
             type="secondary"
-            onClick={onFinish}
+            onClick={formik.handleSubmit}
           />
         </div>
       </FormikProvider>

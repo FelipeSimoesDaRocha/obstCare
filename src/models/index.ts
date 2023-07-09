@@ -1,5 +1,5 @@
 // Next
-import { StaticImageData } from "next/image";
+import { StaticImageData } from 'next/image';
 
 export enum RolesEnum {
     ADMIN = 1,
@@ -50,6 +50,11 @@ export interface IUserPassword {
 
 export interface IUserLoginAndPassword extends IUserLogin, IUserPassword { }
 
+export interface DataItemCardsHome {
+    quantity: number;
+    porcentage: number;
+}
+
 export interface Column {
     title: string;
     dataIndex: string;
@@ -58,23 +63,23 @@ export interface Column {
 }
 
 export interface IObstcares {
-    name: string,
-    email: string,
-    telefone: string,
+    name: string;
+    email: string;
+    telefone: string;
     crm?: string;
 }
 
 export interface IGestantes {
     id: string;
-    name: string,
-    telefone: string,
-    obstetraResponsavel: string,
-    email: string,
+    name: string;
+    telefone: string;
+    obstetraResponsavel: string;
+    email: string;
     date_of_birth: string;
-    dum: string
-    previous_pregnancies: number
-    previous_births: number
-    risk: string
+    dum: string;
+    previous_pregnancies: number;
+    previous_births: number;
+    risk: string;
 }
 
 export interface DataItemObstetras {

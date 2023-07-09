@@ -1,20 +1,34 @@
+// React
+import { useEffect, useState } from 'react';
+
 // Styles
 import * as S from './Home.styles';
+
+import { DataItemCardsHome } from 'models';
+
+import { getHome } from 'services/api';
 
 // Components
 import { Cards } from 'components/cards';
 import { Charts } from 'components/charts';
 
 const HomeScreen = () => {
-  const cardsData = [
-    { name: 'Obstetras', data: '7', value: 12, income: 6 },
-    { name: 'Gestantes', data: '7', value: 17, income: 6 },
-    { name: 'Monitoramentos', data: '7', value: 65, income: 6 },
-    { name: 'Lembretes', data: '7', value: 30, income: 6 },
-  ];
+  const [cardsData, setCardsData] = useState<DataItemCardsHome[]>([]);
 
   const data = [0, 10, 15, 17, 30, 40, 50];
   const labels = ['1', '5', '10', '15', '20', '25', '30'];
+
+  const fetchData = async () => {
+    const response = await getHome();
+
+    const gestantesFormat = response.data
+
+    setCardsData(gestantesFormat)
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <S.Container>
