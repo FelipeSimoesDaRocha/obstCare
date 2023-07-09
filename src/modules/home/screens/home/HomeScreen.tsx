@@ -19,9 +19,10 @@ const HomeScreen = () => {
   return (
     <S.Container>
       <S.Content>
-        {cardsData.map((props, index) => (
-          <Cards key={index} name={props.name} data={props.data} value={props.value} income={props.income} />
-        ))}
+        {cardsData.length > 0 &&
+          cardsData.map((props, index) => (
+            <Cards key={index} name={props.name} data={props.data} value={props.value} income={props.income} />
+          ))}
       </S.Content>
 
       <S.ContentCharts>

@@ -93,18 +93,19 @@ const ActivesChart = ({ data, labels }: LineChartProps) => {
 
             <S.ChartStyle>
                 <ul>
-                    {menu.map((props, index) => (
-                        <li
-                            key={index}
-                            onClick={() => handleItemClick(index)}
-                            style={{
-                                borderBottom: selectedItem === index ? '3px solid #2613f5 ' : ' 3px solid #e9e7fd',
-                                cursor: 'pointer',
-                            }}
-                        >
-                            <p>{props.name}</p>
-                        </li>
-                    ))}
+                    {menu.length > 0 &&
+                        menu.map((props, index) => (
+                            <li
+                                key={index}
+                                onClick={() => handleItemClick(index)}
+                                style={{
+                                    borderBottom: selectedItem === index ? '3px solid #2613f5 ' : ' 3px solid #e9e7fd',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                <p>{props.name}</p>
+                            </li>
+                        ))}
                 </ul>
                 <Line data={chartData} options={options} />
             </S.ChartStyle>

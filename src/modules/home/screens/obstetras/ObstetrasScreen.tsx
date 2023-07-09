@@ -39,7 +39,11 @@ const ObstetrasScreen = () => {
     setSearchValue(value);
   };
 
-  const filteredData = data.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
+  let filteredData: DataItemObstetras[] = []
+
+  if (data && data.length > 0) {
+    filteredData = data.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
+  }
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
