@@ -60,16 +60,10 @@ const ObstetrasScreen = () => {
     setIsOpenDelete(false);
   };
 
-
-  const formatGestantesData = (data: DataItemObstetras[]) =>
-    data.map(gestantes => ({
-      ...gestantes
-    }))
-
   const fetchData = async () => {
     const response = await getObstetras();
 
-    const gestantesFormat = formatGestantesData(response.data)
+    const gestantesFormat = (response.data)
 
     setData(gestantesFormat)
   };

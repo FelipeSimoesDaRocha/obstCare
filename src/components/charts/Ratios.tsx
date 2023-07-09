@@ -40,7 +40,7 @@ const RatiosChart = ({ data, labels }: LineChartProps) => {
         setSelectedDate(date);
     };
 
-    const handlePeriodChange = (e: { target: { value: SetStateAction<string>; }; }) => {
+    const handlePeriodChange = (e: { target: { value: SetStateAction<string> } }) => {
         setSelectedPeriod(e.target.value);
     };
 

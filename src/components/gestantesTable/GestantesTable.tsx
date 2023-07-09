@@ -23,9 +23,6 @@ const GestantesTable = ({
     OpenModal();
   };
 
-
-
-
   return (
     <S.Component>
       <table>

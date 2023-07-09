@@ -86,15 +86,10 @@ const GestantesScreen = () => {
     setIsOpenDelete(false);
   };
 
-  const formatGestantesData = (data: DataItemGestantes[]) =>
-    data.map(gestantes => ({
-      ...gestantes
-    }))
-
   const fetchData = async () => {
     const response = await getGestantes();
 
-    const gestantesFormat = formatGestantesData(response.data)
+    const gestantesFormat = response.data
 
     setData(gestantesFormat)
   };
