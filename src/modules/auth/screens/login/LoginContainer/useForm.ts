@@ -12,7 +12,7 @@ import { saveUser } from 'context/features/user';
 import { useAppDispatch } from 'context/hooks';
 
 // Api
-import { useGetUser } from 'api/login';
+import { useGetUser } from 'services/api/login';
 
 // Firebase
 import { useFirebase } from 'services/firebase';

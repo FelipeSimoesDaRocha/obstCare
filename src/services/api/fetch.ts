@@ -1,4 +1,4 @@
-import { interceptor } from 'api/interceptor';
+import { interceptor } from './interceptor';
 
 import { AsyncStorageKeys } from 'common/constants/asyncStorageKeys';
 

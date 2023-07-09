@@ -1,17 +1,14 @@
 // React
-import { ChangeEvent, useState } from 'react';
-
-// Images
-import icon from '../../../../assets/images/image1.png';
-import icon2 from '../../../../assets/images/image2.png';
-import icon3 from '../../../../assets/images/image3.png';
-import icon4 from '../../../../assets/images/image4.png';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 // Styles
 import * as S from './Gestantes.styles';
 
 // Models
-import { DataItemGestantes } from 'components/gestantesForm/models';
+import { DataItemGestantes } from 'models';
+
+// Api
+import { getGestantes } from 'services/api';
 
 // Components
 import { Button } from 'components/button';
@@ -29,6 +26,7 @@ const GestantesScreen = () => {
   const [isOpenReminder, setIsOpenReminder] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [timeValue, setTimeValue] = useState('');
+  const [data, setData] = useState<DataItemGestantes[]>([]);
 
   const [items, setItems] = useState([
     { id: 1, label: 'Pressão', checked: false },
@@ -47,75 +45,6 @@ const GestantesScreen = () => {
     { title: 'Monitoramentos', dataIndex: 'monitoring', key: 'monitoring' },
     { title: 'Atividade', dataIndex: 'activity', key: 'activity' },
   ];
-
-  const [data, setData] = useState<DataItemGestantes[]>([
-    {
-      id: 1,
-      user: 'Marcos Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 12,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-    {
-      id: 2,
-      user: 'Andrew Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 5,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon2,
-    },
-    {
-      id: 3,
-      user: 'Andrew Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 0,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon3,
-    },
-    {
-      id: 4,
-      user: 'Andrew Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 63,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon4,
-    },
-    {
-      id: 5,
-      user: 'Andrew Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 7,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-    {
-      id: 6,
-      user: 'Andrew Bojangles',
-      ddp: '14/05/2023',
-      phone: '+79000010101',
-      obstetra: 'Caroline Paim',
-      monitoring: 28,
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-  ]);
 
   const handleReminderItens = (itemId: number) => {
     setItems(prevItems => {
@@ -136,7 +65,7 @@ const GestantesScreen = () => {
     setTimeValue(value);
   };
 
-  const filteredData = data.filter(item => item.user.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
@@ -156,6 +85,23 @@ const GestantesScreen = () => {
     setSelectedItems([]);
     setIsOpenDelete(false);
   };
+
+  const formatGestantesData = (data: DataItemGestantes[]) =>
+    data.map(gestantes => ({
+      ...gestantes
+    }))
+
+  const fetchData = async () => {
+    const response = await getGestantes();
+
+    const gestantesFormat = formatGestantesData(response.data)
+
+    setData(gestantesFormat)
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <S.Container>

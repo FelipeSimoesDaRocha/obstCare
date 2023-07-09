@@ -23,6 +23,9 @@ const GestantesTable = ({
     OpenModal();
   };
 
+
+
+
   return (
     <S.Component>
       <table>
@@ -58,15 +61,15 @@ const GestantesTable = ({
               </td>
               <td>
                 <div>
-                  <Image src={item.image ? item.image : avatar} alt={`User ${item.user}`} />
-                  {item.user}
+                  <Image src={avatar} alt={`User ${item.name}`} />
+                  {item.name}
                 </div>
               </td>
               <td>{item.ddp}</td>
-              <td>{item.phone}</td>
-              <td>{item.obstetra}</td>
-              <td>{item.monitoring}</td>
-              <td>{item.activity}</td>
+              <td>{item.telefone}</td>
+              <td>{item.obstetraResponsavel}</td>
+              <td>{item.monitoramentos}</td>
+              <td>{item.ultimaAtividade}</td>
               <td>
                 <button onClick={handleOpenModal}>
                   <Image src={frame} alt="image" />

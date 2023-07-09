@@ -1,5 +1,5 @@
 // Services
-import { interceptor } from 'api/interceptor'
+import { interceptor } from 'services/interceptor'
 
 import userReducer from './features/user'
 

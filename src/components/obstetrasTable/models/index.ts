@@ -1,26 +1,8 @@
-// Next
-import { StaticImageData } from "next/image";
-
 // React
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
 
-export interface Column {
-    title: string;
-    dataIndex: string;
-    key: string;
-    className?: string;
-}
-
-export interface DataItemObstetras {
-    id: number;
-    user: string;
-    pregnant_women: number;
-    phone: string;
-    state: string;
-    created_at: string;
-    activity: string;
-    image: StaticImageData | null;
-}
+// Models
+import { Column, DataItemObstetras } from "models";
 
 export interface ObstetrasTableProps {
     columns: Column[];

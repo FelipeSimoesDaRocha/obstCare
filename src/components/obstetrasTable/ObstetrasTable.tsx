@@ -53,15 +53,15 @@ const ObstetrasTable = ({
               </td>
               <td>
                 <div>
-                  <Image src={item.image ? item.image : avatar} alt={`User ${item.user}`} />
-                  {item.user}
+                  <Image src={item.perfilImage ? item.perfilImage : avatar} alt={`User ${item.name}`} />
+                  {item.name}
                 </div>
               </td>
-              <td>{item.pregnant_women}</td>
-              <td>{item.phone}</td>
-              <td>{item.state}</td>
-              <td>{item.created_at}</td>
-              <td>{item.activity}</td>
+              <td>{item.numerosDeGestantes}</td>
+              <td>{item.telefone}</td>
+              <td>{item.estadoOndeReside}</td>
+              <td>{item.dataDaCriacao}</td>
+              <td>{item.ultimaAtividade}</td>
               <td>
                 <button>
                   <Image src={frame} alt="image" />

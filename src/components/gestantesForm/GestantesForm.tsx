@@ -29,10 +29,11 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
   };
 
   const initialValues: IGestantes = {
-    obstetra: '',
+    id: '',
+    obstetraResponsavel: '',
     name: '',
     email: '',
-    phone: '',
+    telefone: '',
     date_of_birth: '',
     dum: '',
     previous_pregnancies: 0,
@@ -61,14 +62,13 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
       setIsLoading(true);
       const newItem = {
         id: data.length + 1,
+        name: formik.values.name,
+        perfilImage: null,
         ddp: '',
-        user: formik.values.name,
-        phone: formik.values.phone,
-        obstetra: '',
-        monitoring: 0,
-        created_at: '',
-        activity: '',
-        image: null,
+        telefone: formik.values.telefone,
+        obstetraResponsavel: '',
+        monitoramentos: 0,
+        ultimaAtividade: '',
       };
 
       setData([...data, newItem]);
@@ -92,7 +92,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
               title={'Obstetra'}
               data-testid="obstetra"
               onChange={formik.handleChange('obstetra')}
-              value={formik.values.obstetra}
+              value={formik.values.obstetraResponsavel}
               options={[
                 { value: 1, description: 'Andrew Bojangles' },
                 { value: 2, description: 'Fábio Bojangles' },
@@ -131,19 +131,19 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
             />
           </div>
           <div className="form-input">
-            <ErrorMessage className="err" name="phone" component="div" />
+            <ErrorMessage className="err" name="telefone" component="div" />
             <Input
-              key="input-phone"
-              id="phone"
+              key="input-telefone"
+              id="telefone"
               title="Telefone"
               type="text"
               mask="(99) 9999-9999"
               placeholder="Escreva aqui..."
-              data-testid="phone"
-              onChange={formik.handleChange('phone')}
-              onBlur={formik.handleBlur('phone')}
-              value={formik.values.phone}
-              autocomplete="current-phone"
+              data-testid="telefone"
+              onChange={formik.handleChange('telefone')}
+              onBlur={formik.handleBlur('telefone')}
+              value={formik.values.telefone}
+              autocomplete="current-telefone"
             />
           </div>
           <div className="form-input">

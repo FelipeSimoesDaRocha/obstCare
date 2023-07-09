@@ -25,7 +25,7 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
   const initialValues: IObstcares = {
     name: '',
     email: '',
-    phone: '',
+    telefone: '',
     crm: '',
   };
 
@@ -38,12 +38,12 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
   });
 
   useEffect(() => {
-    if (!formik.values.name || !formik.values.email || !formik.values.phone || !formik.values.crm) {
+    if (!formik.values.name || !formik.values.email || !formik.values.telefone || !formik.values.crm) {
       setIsDisabled(true);
     } else {
       setIsDisabled(false);
     }
-  }, [formik.values.name, formik.values.email, formik.values.phone, formik.values.crm]);
+  }, [formik.values.name, formik.values.email, formik.values.telefone, formik.values.crm]);
 
   const handleCloseModal = () => {
     onClose();
@@ -54,13 +54,13 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
     try {
       const newItem = {
         id: data.length + 1,
-        user: formik.values.name,
-        pregnant_women: 0,
-        phone: formik.values.phone,
-        state: 'XX',
-        created_at: '15/06/2023',
-        activity: 'Just now',
-        image: null,
+        name: formik.values.name,
+        perfilImage: null,
+        numerosDeGestantes: 0,
+        telefone: formik.values.name,
+        estadoOndeReside: 'XX',
+        dataDaCriacao: '15/06/2023',
+        ultimaAtividade: 'Just now',
       };
 
       setData([...data, newItem]);
@@ -119,7 +119,7 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
               data-testid="phone"
               onChange={formik.handleChange('phone')}
               onBlur={formik.handleBlur('phone')}
-              value={formik.values.phone}
+              value={formik.values.telefone}
               autocomplete="current-phone"
             />
           </div>

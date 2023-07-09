@@ -1,17 +1,14 @@
 // React
-import { ChangeEvent, useState } from 'react';
-
-// Images
-import icon from '../../../../assets/images/image1.png';
-import icon2 from '../../../../assets/images/image2.png';
-import icon3 from '../../../../assets/images/image3.png';
-import icon4 from '../../../../assets/images/image4.png';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 // Styles
 import * as S from './Obstetras.styles';
 
 // Models
-import { DataItemObstetras } from 'components/obstetrasForm/models';
+import { DataItemObstetras } from 'models';
+
+// Api
+import { getObstetras } from 'services/api';
 
 // Components
 import { Button } from 'components/button';
@@ -36,74 +33,13 @@ const ObstetrasScreen = () => {
     { title: 'Atividade', dataIndex: 'activity', key: 'activity' },
   ];
 
-  const [data, setData] = useState<DataItemObstetras[]>([
-    {
-      id: 1,
-      user: 'Felipe Bojangles',
-      pregnant_women: 3,
-      phone: '+79000010101',
-      state: 'RS',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-    {
-      id: 2,
-      user: 'George Bojangles',
-      pregnant_women: 2,
-      phone: '+79000010101',
-      state: 'SP',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon2,
-    },
-    {
-      id: 3,
-      user: 'Maria Bojangles',
-      pregnant_women: 5,
-      phone: '+79000010101',
-      state: 'SP',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon3,
-    },
-    {
-      id: 4,
-      user: 'Andrew Bojangles',
-      pregnant_women: 0,
-      phone: '+79000010101',
-      state: 'SP',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon4,
-    },
-    {
-      id: 5,
-      user: 'Andrew Bojangles',
-      pregnant_women: 0,
-      phone: '+79000010101',
-      state: 'SC',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-    {
-      id: 6,
-      user: 'Andrew Bojangles',
-      pregnant_women: 0,
-      phone: '+79000010101',
-      state: 'SC',
-      created_at: '14/05/2023',
-      activity: '2 days ago',
-      image: icon,
-    },
-  ]);
+  const [data, setData] = useState<DataItemObstetras[]>([]);
 
   const handleSearchChange = (value: string) => {
     setSearchValue(value);
   };
 
-  const filteredData = data.filter(item => item.user.toLowerCase().includes(searchValue.toLowerCase()));
+  const filteredData = data.filter(item => item.name.toLowerCase().includes(searchValue.toLowerCase()));
 
   const handleCheckboxChange = (event: ChangeEvent<HTMLInputElement>, index: number) => {
     const isChecked = event.target.checked;
@@ -123,6 +59,24 @@ const ObstetrasScreen = () => {
     setSelectedItems([]);
     setIsOpenDelete(false);
   };
+
+
+  const formatGestantesData = (data: DataItemObstetras[]) =>
+    data.map(gestantes => ({
+      ...gestantes
+    }))
+
+  const fetchData = async () => {
+    const response = await getObstetras();
+
+    const gestantesFormat = formatGestantesData(response.data)
+
+    setData(gestantesFormat)
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <S.Container>

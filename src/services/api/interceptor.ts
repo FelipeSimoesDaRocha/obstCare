@@ -2,7 +2,7 @@
 import { logout } from 'context/features/user'
 
 // Api
-import fetcher from 'api/fetch'
+import fetcher from './fetch'
 
 // Redux
 import { Store } from '@reduxjs/toolkit'
