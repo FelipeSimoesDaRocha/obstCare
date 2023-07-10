@@ -5,11 +5,11 @@ import { HomeScreen } from 'modules/home/screens/home';
 import { Layout } from 'components/layout';
 
 const HomePage = () => {
-    return (
-        <Layout selectedKey="1">
-            <HomeScreen />
-        </Layout>
-    );
+  return (
+    <Layout selectedKey="1">
+      <HomeScreen />
+    </Layout>
+  );
 };
 
 export default HomePage;
