@@ -111,3 +111,25 @@ export interface DataItemGestantes {
   monitoramentos: number;
   ultimaAtividade: string;
 }
+
+export interface DataGraficos {
+  labels: string[];
+  values: number[];
+}
+
+export enum TypeDateGrafico {
+  DIARIO = 1,
+  SEMANAL = 2,
+  MENSAL = 3,
+}
+
+export enum TypeTabGrafico {
+  OBSTETRAS = 1,
+  GESTANTES = 2,
+  MONITORAMENTOS = 3,
+  LEMBRETES = 4,
+  GESTOBST = 5,
+  MONITGEST = 6,
+  LEMBGEST = 7,
+  ALTORISCOTOTAL = 8,
+}

@@ -4,22 +4,21 @@ import { useEffect, useState } from 'react';
 // Styles
 import * as S from './Home.styles';
 
-import { DataItemCardsApi, DataItemCardsHome } from 'models';
+import { DataGraficos, DataItemCardsApi, DataItemCardsHome, TypeDateGrafico, TypeTabGrafico } from 'models';
 
-import { getHome } from 'services/api';
+import { getGraficoNovos, getHome } from 'services/api';
 
 // Components
 import { Cards } from 'components/cards';
 import { Charts } from 'components/charts';
+import queryString from 'query-string';
 
 const HomeScreen = () => {
-  const [cardsData, setCardsData] = useState<DataItemCardsApi>({} as DataItemCardsApi);
-
-  const data = [0, 10, 15, 17, 30, 40, 50];
-  const labels = ['1', '5', '10', '15', '20', '25', '30'];
+  const [cardsData, setCardsData] = useState({} as DataItemCardsApi);
+  const [graficoNovos, setGraficoNovos] = useState<DataGraficos>({} as DataGraficos);
 
   const fetchData = async () => {
-    const { data } = await getHome();
+    const { data }: any = await getHome();
     setCardsData(data);
   };
 
@@ -39,7 +38,8 @@ const HomeScreen = () => {
       );
     });
   };
-
+  // inicio=2023-01-10T00%3A24%3A55.974Z&final=2023-07-10T00%3A24%3A55.974Z&type=1&tab=1
+  // inicio=2023-07-10T00%3A24%3A55.974Z&final=2023-01-10T00%3A24%3A55.974Z&tab=1&type=1
   return (
     <S.Container>
       <S.Content>
@@ -51,10 +51,10 @@ const HomeScreen = () => {
       </S.Content>
 
       <S.ContentCharts>
-        <Charts.NewChart data={data} labels={labels} />
-        <Charts.ActivesChart data={data} labels={labels} />
+        <Charts.NewChart />
+        {/* <Charts.ActivesChart data={data} labels={labels} />
         <Charts.RatiosChart data={data} labels={labels} />
-        <Charts.RetentionChart data={data} labels={labels} />
+        <Charts.RetentionChart data={data} labels={labels} /> */}
       </S.ContentCharts>
     </S.Container>
   );
