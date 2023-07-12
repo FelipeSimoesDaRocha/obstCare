@@ -3,6 +3,7 @@ import axios from 'axios';
 
 // Models
 import { DataItemGestantes, DataItemObstetras, TypeDateGrafico, TypeTabGrafico } from 'models';
+
 import queryString from 'query-string';
 
 export const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });

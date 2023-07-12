@@ -12,6 +12,12 @@ import DotsVertical from '../../assets/icons/dots-vertical.svg';
 // Styles
 import * as S from './Charts.styles';
 
+// Models
+import { TypeTabGrafico, DataGraficos } from 'models';
+
+// Services
+import { getGraficoNovos } from 'services/api';
+
 // Moment
 import moment from 'moment';
 
@@ -19,9 +25,7 @@ import moment from 'moment';
 import { Broadcast } from 'components/broadcast';
 
 import { Chart, CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
-import { TypeDateGrafico, TypeTabGrafico, DataGraficos } from 'models';
-import { getGraficoNovos } from 'services/api';
-import { updateMenuWithData } from './mapppers';
+
 Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement);
 
 const NewChart = () => {
@@ -110,7 +114,7 @@ const NewChart = () => {
 
   const updateMenuWithData = (response: any, id: any) => {
     if (id === TypeTabGrafico.OBSTETRAS) {
-      let newData = {
+      const newData = {
         labels: response.data.obstetras.map((item: { quantidade: number; date: string }) =>
           moment(item.date).format(selectedPeriod === '3' ? 'MM/YYYY' : 'DD/MM')
         ),
@@ -121,7 +125,7 @@ const NewChart = () => {
       // setMenu();
     }
     if (id === TypeTabGrafico.GESTANTES) {
-      let newData = {
+      const newData = {
         labels: response.data.gestantes.map((item: { quantidade: number; date: string }) =>
           moment(item.date).format(selectedPeriod === '3' ? 'MM/YYYY' : 'DD/MM')
         ),
@@ -131,7 +135,7 @@ const NewChart = () => {
       setArray((prevArray: any) => [...prevArray, newData]);
     }
     if (id === TypeTabGrafico.MONITORAMENTOS) {
-      let newData = {
+      const newData = {
         labels: response.data.monitoramentos.map((item: { quantidade: number; date: string }) =>
           moment(item.date).format(selectedPeriod === '3' ? 'MM/YYYY' : 'DD/MM')
         ),
@@ -141,7 +145,7 @@ const NewChart = () => {
       setArray((prevArray: any) => [...prevArray, newData]);
     }
     if (id === TypeTabGrafico.LEMBRETES) {
-      let newData = {
+      const newData = {
         labels: response.data.lembretes.map((item: { quantidade: number; date: string }) =>
           moment(item.date).format(selectedPeriod === '3' ? 'MM/YYYY' : 'DD/MM')
         ),
@@ -199,11 +203,11 @@ const NewChart = () => {
               <Line
                 key={index}
                 data={{
-                  labels: array?.filter(e => e.id === menuItem.id)[0]?.labels,
+                  labels: array?.filter((e: { id: TypeTabGrafico; }) => e.id === menuItem.id)[0]?.labels,
                   datasets: [
                     {
                       label: 'Obstetras',
-                      data: array?.filter(e => e.id === menuItem.id)[0]?.values,
+                      data: array?.filter((e: { id: TypeTabGrafico; }) => e.id === menuItem.id)[0]?.values,
                       fill: false,
                       borderColor: '#0F60FF',
                       borderWidth: 4,

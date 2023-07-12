@@ -50,15 +50,15 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
     }
   }, []);
 
-  const onSubmit = async (values) => {
+  const onSubmit = async () => {
     try {
       setIsLoading(true);
       const newItem = {
         id: data.length + 1,
-        name: values.name,
+        name: formik.values.name,
         perfilImage: null,
         ddp: '',
-        telefone: values.telefone,
+        telefone: formik.values.telefone,
         obstetraResponsavel: '',
         monitoramentos: 0,
         ultimaAtividade: '',
@@ -78,7 +78,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
     initialValues,
     validateOnBlur: true,
     enableReinitialize: true,
-    onSubmit
+    onSubmit: () => { },
   });
 
   return (
@@ -220,7 +220,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
             disabled={isDisabled}
             loading={isLoading}
             type="secondary"
-            onClick={formik.handleSubmit}
+            onClick={onSubmit}
           />
         </div>
       </FormikProvider>

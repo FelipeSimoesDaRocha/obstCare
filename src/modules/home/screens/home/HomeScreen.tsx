@@ -11,6 +11,7 @@ import { getGraficoNovos, getHome } from 'services/api';
 // Components
 import { Cards } from 'components/cards';
 import { Charts } from 'components/charts';
+
 import queryString from 'query-string';
 
 const HomeScreen = () => {
