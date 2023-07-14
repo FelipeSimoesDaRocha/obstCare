@@ -13,7 +13,10 @@ import DotsVertical from '../../assets/icons/dots-vertical.svg';
 import * as S from './Charts.styles';
 
 // Models
-import { LineChartProps } from './models';
+import { TypeTabGrafico } from 'models';
+
+// Services
+import { getGraficoRetencao } from 'services/api';
 
 // Moment
 import moment from 'moment';
@@ -22,8 +25,6 @@ import moment from 'moment';
 import { Broadcast } from 'components/broadcast';
 
 import { Chart, CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement } from 'chart.js';
-import { DataGraficos, TypeTabGrafico } from 'models';
-import { getGraficoRetencao } from 'services/api';
 Chart.register(CategoryScale, LinearScale, Title, Tooltip, Legend, PointElement, LineElement);
 
 const RetentionChart = () => {
