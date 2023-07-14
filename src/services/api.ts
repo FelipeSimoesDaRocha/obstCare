@@ -12,6 +12,12 @@ export const api = axios.create({ baseURL: process.env.NEXT_PUBLIC_API_URL });
 export const getHome = () => api.get<DataItemObstetras>('admin/home');
 export const getGraficoNovos = (inicio: string, final: string, type: TypeDateGrafico, tab: TypeTabGrafico) =>
   api.get<DataItemObstetras[]>(`admin/home/graph/novos?${queryString.stringify({ inicio, final, type, tab })}`);
+export const getGraficoAtivos = (inicio: string, final: string, type: TypeDateGrafico, tab: TypeTabGrafico) =>
+  api.get<DataItemObstetras[]>(`admin/home/graph/ativos?${queryString.stringify({ inicio, final, type, tab })}`);
+export const getGraficoRatios = (inicio: string, final: string, type: TypeDateGrafico, tab: TypeTabGrafico) =>
+  api.get<DataItemObstetras[]>(`admin/home/graph/ratios?${queryString.stringify({ inicio, final, type, tab })}`);
+export const getGraficoRetencao = (date: string, type: TypeDateGrafico, tab: TypeTabGrafico) =>
+  api.get<DataItemObstetras[]>(`admin/home/graph/retencao?${queryString.stringify({ date, type, tab })}`);
 
 // Obstetras
 export const getObstetras = () => api.get<DataItemObstetras[]>('admin/obstetras');

@@ -106,11 +106,11 @@ const NewChart = () => {
     const type = parseInt(selectedPeriod);
 
     const response = await getGraficoNovos(inicio, final, type, tab);
-    console.log(99999, response.data);
+    // console.log(99999, response.data);
     updateMenuWithData(response, tab);
   };
 
-  console.log(1111111, array);
+  // console.log(1111111, array);
 
   const updateMenuWithData = (response: any, id: any) => {
     if (id === TypeTabGrafico.OBSTETRAS) {
@@ -203,11 +203,11 @@ const NewChart = () => {
               <Line
                 key={index}
                 data={{
-                  labels: array?.filter((e: { id: TypeTabGrafico; }) => e.id === menuItem.id)[0]?.labels,
+                  labels: array?.filter((e: { id: TypeTabGrafico }) => e.id === menuItem.id)[0]?.labels,
                   datasets: [
                     {
                       label: 'Obstetras',
-                      data: array?.filter((e: { id: TypeTabGrafico; }) => e.id === menuItem.id)[0]?.values,
+                      data: array?.filter((e: { id: TypeTabGrafico }) => e.id === menuItem.id)[0]?.values,
                       fill: false,
                       borderColor: '#0F60FF',
                       borderWidth: 4,
