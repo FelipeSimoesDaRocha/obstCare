@@ -56,6 +56,7 @@ const GestantesForm = ({ data, setData, onClose }: GestantesFormProps) => {
       const newItem = {
         id: data.length + 1,
         name: formik.values.name,
+        email: '',
         perfilImage: null,
         ddp: '',
         telefone: formik.values.telefone,

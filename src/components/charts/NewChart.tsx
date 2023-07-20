@@ -106,11 +106,8 @@ const NewChart = () => {
     const type = parseInt(selectedPeriod);
 
     const response = await getGraficoNovos(inicio, final, type, tab);
-    // console.log(99999, response.data);
     updateMenuWithData(response, tab);
   };
-
-  // console.log(1111111, array);
 
   const updateMenuWithData = (response: any, id: any) => {
     if (id === TypeTabGrafico.OBSTETRAS) {

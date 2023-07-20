@@ -34,9 +34,7 @@ const HomeScreen = () => {
   };
 
   const renderCards = (data: DataItemCardsApi) => {
-    console.log('data', data);
     if (data?.gestantes) {
-      console.log('1', 1);
       return Object.entries(data).map(([key, value], index) => {
         const capitalizedKey = capitalizeFirstLetter(key);
         return (

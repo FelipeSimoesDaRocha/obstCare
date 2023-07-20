@@ -55,6 +55,7 @@ const ObstetrasForm = ({ data, setData, onClose }: ObstetrasFormProps) => {
       const newItem = {
         id: data.length + 1,
         name: formik.values.name,
+        email: '',
         perfilImage: null,
         numerosDeGestantes: 0,
         telefone: formik.values.name,

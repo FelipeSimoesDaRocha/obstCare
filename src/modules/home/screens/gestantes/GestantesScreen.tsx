@@ -39,6 +39,7 @@ const GestantesScreen = () => {
 
   const columns = [
     { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'DPP', dataIndex: 'ddp', key: 'ddp' },
     { title: 'Telefone', dataIndex: 'phone', key: 'phone' },
     { title: 'Obstetra', dataIndex: 'obstetra', key: 'obstetra' },

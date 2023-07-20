@@ -58,6 +58,7 @@ const ObstetrasTable = ({
                 </div>
               </td>
               <td>{item.numerosDeGestantes}</td>
+              <td>{item.email}</td>
               <td>{item.telefone}</td>
               <td>{item.estadoOndeReside}</td>
               <td>{item.dataDaCriacao}</td>

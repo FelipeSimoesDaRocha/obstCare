@@ -108,10 +108,7 @@ const RetentionChart = () => {
     } catch (e) {
       console.log('error', e);
     }
-    // console.log(99999, response.data);
   };
-
-  // console.log(1111111, array);
 
   const updateMenuWithData = (response: any, id: any) => {
     if (id === TypeTabGrafico.OBSTETRAS) {

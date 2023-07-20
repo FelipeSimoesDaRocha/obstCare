@@ -102,9 +102,7 @@ const RatiosChart = () => {
     const inicio = dataInicio.toISOString();
     const final = dataFinal.toISOString();
     const type = parseInt(selectedPeriod);
-    console.log(99999, inicio);
     const response = await getGraficoRatios(inicio, final, type, tab);
-    console.log(99999, response.data);
     updateMenuWithData(response, tab);
   };
 

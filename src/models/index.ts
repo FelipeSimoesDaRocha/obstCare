@@ -48,7 +48,7 @@ export interface IUserPassword {
   newPassword: string;
 }
 
-export interface IUserLoginAndPassword extends IUserLogin, IUserPassword {}
+export interface IUserLoginAndPassword extends IUserLogin, IUserPassword { }
 
 export interface DataItemCardsHome {
   quantity: number;
@@ -92,6 +92,7 @@ export interface IGestantes {
 export interface DataItemObstetras {
   id: number;
   name: string;
+  email: string
   perfilImage: StaticImageData | null;
   numerosDeGestantes: number;
   telefone: string;
@@ -103,6 +104,7 @@ export interface DataItemObstetras {
 export interface DataItemGestantes {
   id: number;
   name: string;
+  email: string
   perfilImage: StaticImageData | null;
   ddp: string;
   telefone: string;

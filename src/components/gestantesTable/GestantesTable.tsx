@@ -62,6 +62,7 @@ const GestantesTable = ({
                   {item.name}
                 </div>
               </td>
+              <td>{item.email}</td>
               <td>{item.ddp}</td>
               <td>{item.telefone}</td>
               <td>{item.obstetraResponsavel}</td>

@@ -25,8 +25,9 @@ const ObstetrasScreen = () => {
   const [searchValue, setSearchValue] = useState('');
 
   const columns = [
-    { title: 'User', dataIndex: 'user', key: 'user', className: 'hover-effect' },
+    { title: 'User', dataIndex: 'user', key: 'user' },
     { title: 'Nº Gestantes', dataIndex: 'pregnant_women', key: 'pregnant_women' },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
     { title: 'Telefone', dataIndex: 'phone', key: 'phone' },
     { title: 'Estado', dataIndex: 'state', key: 'state' },
     { title: 'Data de criação', dataIndex: 'created_at', key: 'created_at' },
